@@ -1,5 +1,3 @@
-import com.google.gson.Gson;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
@@ -81,9 +79,18 @@ public class ClientHandler implements Runnable {
     }
 
     private void sendMovieList(PrintWriter output, List<Movie> movies) {
-        Gson gson = new Gson();
-        String moviesJson = gson.toJson(movies);
-        output.println(moviesJson);
+        if (movies.isEmpty()) {
+            output.println("No hay películas para el director especificado.");
+        } else {
+            // Enviar todos los títulos en un solo mensaje
+            StringBuilder titles = new StringBuilder();
+            for (Movie movie : movies) {
+                titles.append(movie.getTitle()).append(", ");
+            }
+            // Eliminar la última coma y espacio
+            titles.delete(titles.length() - 2, titles.length());
+            output.println(titles.toString());
+        }
     }
 
     private Movie receiveMovieFromClient(BufferedReader input) throws IOException {
