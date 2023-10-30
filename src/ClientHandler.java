@@ -32,13 +32,21 @@ public class ClientHandler implements Runnable {
                         // Consultar película por ID
                         int movieId = Integer.parseInt(input.readLine());
                         Movie movieById = findMovieById(movieId);
-                        output.println(movieById.getTitle());
+                        if (movieById != null) {
+                            output.println(movieById.getTitle());
+                        } else {
+                            output.println("Error: No existe una película con ese ID.");
+                        }
                         break;
                     case "2":
                         // Consultar película por título
                         String movieTitle = input.readLine();
                         Movie movieByTitle = findMovieByTitle(movieTitle);
-                        output.println(movieByTitle.getTitle());
+                        if (movieByTitle != null) {
+                            output.println(movieByTitle.getTitle());
+                        } else {
+                            output.println("Error: No existe una película con ese título.");
+                        }
                         break;
                     case "3":
                         // Consultar películas por director
