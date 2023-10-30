@@ -33,7 +33,9 @@ public class ClientHandler implements Runnable {
                         int movieId = Integer.parseInt(input.readLine());
                         Movie movieById = findMovieById(movieId);
                         if (movieById != null) {
-                            output.println(movieById.getTitle());
+                            output.println("Título: " + movieById.getTitle() +
+                                    ". Director: " + movieById.getDirector() +
+                                    ". Precio: " + movieById.getPrice());
                         } else {
                             output.println("Error: No existe una película con ese ID.");
                         }
@@ -43,7 +45,8 @@ public class ClientHandler implements Runnable {
                         String movieTitle = input.readLine();
                         Movie movieByTitle = findMovieByTitle(movieTitle);
                         if (movieByTitle != null) {
-                            output.println(movieByTitle.getTitle());
+                            output.println("Director: " + movieByTitle.getDirector() +
+                                    ". Precio: " + movieByTitle.getPrice());
                         } else {
                             output.println("Error: No existe una película con ese título.");
                         }

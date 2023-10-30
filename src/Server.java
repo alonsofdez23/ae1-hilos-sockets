@@ -39,6 +39,7 @@ public class Server {
     }
 
     public static void addMovie(Movie movie) {
+        // Bloquea el método con el objeto Lock para evitar concurrencia
         lock.lock();
         try {
             if (!movieExists(movie.getId())) {
