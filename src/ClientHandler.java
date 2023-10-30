@@ -58,7 +58,6 @@ public class ClientHandler implements Runnable {
                         // Añadir película
                         Movie newMovie = receiveMovieFromClient(input);
                         addMovie(newMovie);
-                        output.println("Película añadida con éxito");
                         break;
                     case "5":
                         // Salir de la aplicación
